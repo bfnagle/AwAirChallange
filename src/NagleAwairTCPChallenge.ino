@@ -118,7 +118,18 @@ os_thread_return_t publishToLibrato()
 {
   for(;;)
   {
-    Particle.publish("AwairData",publishString);
+    char VOCString[5] = "\0";       //5 characters because biggest value is 4095, and add NULL terminator
+    char tempString[7] = "\0";      //7 characters because biggest value is hundreds of degrees with 2 decimal places (e.g. 100.23) plus a NULL terminator
+    char humidString[4] = "\0";     //4 characters because biggest value is 100 with a NULL terminator
+    
+    sprintf(VOCString,"%d",analogRead(vOC));
+    sprintf(tempString,"%.2f",sht31.readTemperature());
+    sprintf(humidString,"%d",static_cast<int>(sht31.readHumidity()));
+    
+    Particle.publish("VOC",VOCString);
+    Particle.publish("Temperature",tempString);
+    Particle.publish("Humidity",humidString);
+    //Particle.publish("AwairData",publishString);
     delay(60000);
   }
 }
