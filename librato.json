@@ -1,0 +1,19 @@
+{
+    "event": "librato_",
+    "url": "https://metrics-api.librato.com/v1/measurements",
+    "requestType": "POST",
+    "auth": {
+        "username": "brendan.nagle.th@dartmouth.edu",
+        "password": "df24ad87bb7cdbdd0f3e9b37e6286254825920c3fcf2828c3d4ca13b764eeef8"
+    },
+    "json": {
+        "tags": {
+            "device": "{{PARTICLE_DEVICE_ID}}"
+        },
+        "measurements": [{
+            "name": "{{PARTICLE_EVENT_NAME}}",
+            "value": "{{PARTICLE_EVENT_VALUE}}"
+        }]
+    },
+    "noDefaults": true
+}
