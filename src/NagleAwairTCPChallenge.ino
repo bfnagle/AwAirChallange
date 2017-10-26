@@ -28,7 +28,7 @@ const int blue = 0;
 const int green = 0;
 uint16_t brightness = 255;
 
-//TCPServer server = TCPServer(22); //SSH
+TCPServer server = TCPServer(22); //SSH
 //TCPClient client;
 
 void setup()
@@ -37,7 +37,7 @@ void setup()
   RGB.color(red, blue, green);
   RGB.brightness(brightness);
 
-  //server.begin();
+  server.begin();
 
   Serial.begin(115200);
 
@@ -109,7 +109,7 @@ os_thread_return_t processAndPrint()
     //} else {
     //  client = server.available();
     //}
-    //server.print(publishString);
+    server.print(publishString);
     delay(10000);
   }
 }
